@@ -1,0 +1,18 @@
+
+chrome ext window resizer:
+ ui
+  list of presets
+  save as
+ save
+  save position all windows with their tabs (window.screenX, screenY)
+  save all open tabs
+  save all size of windows(window.outerHeight, window.innerHeight)
+  save up to three presets
+
+ load
+  set position on all windows (window.moveTo)
+  load all saved tabs 
+    window.open("http://myurl.domain", "myWindowName", "resizable");
+  set size of all windows (window.resizeTo)
+  
+additional screens causing problems?
