@@ -2,18 +2,32 @@
 <html>
 
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   <style>
     button {
-      height: 30px;
-      width: 30px;
+      font-family: 'Raleway', sans-serif;
+      text-align: center;
+      margin: 10px;
+      height: 40px;
+      width: 120px;
       outline: none;
+      background: transparent;
+      border-radius: 5px;
+      border: 1px solid #474747;
+    }
+    button:hover {
+      color: white;
+      background: black;
+      border: 1px solid black;
     }
   </style>
 </head>
 
 <body>
-  <button id="changeColor"></button>
-  <script src="popus.js"></script>
+  <button id="saveButton">SAVE</button>
+  <button id="openButton">OPEN</button>
+  <button id="savePresetButton">SAVE PRESET</button>
+  <script src="popup.js"></script>
 </body>
 
 </html>
