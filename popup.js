@@ -22,14 +22,13 @@ const saveCurrentPreset = () => {
 }
 
 const openPreset = (chosenPreset) => {
+  // if (chosenPreset)
   // let presetToLoad = savedPresets.find(preset => preset.id === chosenPreset.id)
   // chrome.tabs.remove close all tabs first ? 
   let windows;
   chrome.storage.sync.get('presets', function (data) {
     windows = data.presets;
-    console.log('windows : ', windows);
     windows.forEach(window => {
-      console.log('window.state: ', window.state);
       chrome.windows.create({
         url: window.tabs.map(tab => tab.url),
         left: window.left,
@@ -39,11 +38,10 @@ const openPreset = (chosenPreset) => {
         focused: window.focused,
         incognito: window.incognito,
         type: window.typ,
+        // see bug with setting state here:
+        // https://bugs.chromium.org/p/chromium/issues/detail?id=459841
         // state: window.state
       });
-      if (window.state === "maximized"){
-        chrome.window.update({state: window.state })
-      }
     });
   });
 }
@@ -52,6 +50,6 @@ const saveNewPreset = (presetName) => {
   const schema = {
     id: '',
     name: '',
-    tabs: '',
+    windows: '',
   }
 }
