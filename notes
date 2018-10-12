@@ -16,9 +16,6 @@ chrome ext window resizer:
     window.open("http://myurl.domain", "myWindowName", "resizable");
   set size of all windows (window.resizeTo)
     
-additional screens causing problems?
-
-
 bugs:
  chrome.windows.create({ state: "maximized" }) causes crash
  https://bugs.chromium.org/p/chromium/issues/detail?id=459841
