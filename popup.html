@@ -2,31 +2,24 @@
 <html>
 
 <head>
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-  <style>
-    button {
-      font-family: 'Raleway', sans-serif;
-      text-align: center;
-      margin: 10px;
-      height: 40px;
-      width: 120px;
-      outline: none;
-      background: transparent;
-      border-radius: 5px;
-      border: 1px solid #474747;
-    }
-    button:hover {
-      color: white;
-      background: black;
-      border: 1px solid black;
-    }
-  </style>
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link href="./css/normalize.css" rel="stylesheet">
+  <link href="./css/skeleton.css" rel="stylesheet">
+  <link href="./css/index.css" rel="stylesheet">
 </head>
 
 <body>
-  <button id="saveButton">SAVE</button>
-  <button id="openButton">OPEN</button>
-  <button id="savePresetButton">SAVE PRESET</button>
+  <div class="container">
+
+    <button class="button-primary button marginTop20px" id="saveButton">SAVE</button>
+    <button class="button-primary button" id="openButton">OPEN</button>
+    <button class="button-primary button" id="savePresetButton">SAVE PRESET</button>
+    <label class="displayFlex flexRow flexCenter">
+      <input type="checkbox" class="marginRight5px" id="closeAllWindowsCheckbox">
+      <h6 class="label-body">Close all other windows</h6>
+    </label>
+  </div>
+
   <script src="popup.js"></script>
 </body>
 

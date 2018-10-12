@@ -1,7 +1,8 @@
 
-let openButton = document.getElementById('openButton');
-let saveButton = document.getElementById('saveButton');
-let savePresetButton = document.getElementById('savePresetButton');
+const openButton = document.getElementById('openButton');
+const saveButton = document.getElementById('saveButton');
+const savePresetButton = document.getElementById('savePresetButton');
+const closeAllWindowsCheckbox = document.getElementById('closeAllWindowsCheckbox');
 
 openButton.onclick = function (element) {
   openPreset();
