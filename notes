@@ -3,6 +3,7 @@ chrome ext window resizer:
  ui
   list of presets
   save as
+  close all other windows checkbox
  save
   save position all windows with their tabs (window.screenX, screenY)
   save all open tabs
@@ -14,5 +15,11 @@ chrome ext window resizer:
   load all saved tabs 
     window.open("http://myurl.domain", "myWindowName", "resizable");
   set size of all windows (window.resizeTo)
-  
+    
 additional screens causing problems?
+
+
+bugs:
+ chrome.windows.create({ state: "maximized" }) causes crash
+ https://bugs.chromium.org/p/chromium/issues/detail?id=459841
+ hence no fullscreened windows...
