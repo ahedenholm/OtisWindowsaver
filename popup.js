@@ -1,22 +1,22 @@
-window.onload = () => loadSavedPresets();
-const openButton = document.getElementById('openButton');
-const saveButton = document.getElementById('saveButton');
+window.onload = () => {
+  // chrome.storage.local.clear((msg) => console.log(msg));  
+  loadSavedPresets();
+}
+
+const saveAsButton = document.getElementById('saveAsButton');
 let closeAllWindowsCheckbox = document.getElementById('closeAllWindowsCheckbox');
 let presetList = document.getElementById('presetList');
 
-
-saveButton.onclick = function (element) {
-  saveCurrentPreset();
-};
 saveAsButton.onclick = function (element) {
   inputPresetName();
 };
 
 const openPreset = (chosenPreset) => {
-  // if (chosenPreset)
-  // let presetToLoad = savedPresets.find(preset => preset.id === chosenPreset.id)
-  // chrome.tabs.remove close all tabs first ? 
   let windows;
+  // async might cause problems here
+  if (closeAllWindowsCheckbox.checked) {
+    closeAllWindows();
+  }
   chrome.storage.local.get(null, function (data) {
     for (var key in data) {
       if (key === chosenPreset) {
@@ -56,6 +56,18 @@ const openPreset = (chosenPreset) => {
         incognito: windows.incognito,
         type: windows.typ,
       });
+    };
+  });
+}
+
+closeAllWindows = () => {
+   chrome.windows.getAll(function (windows) {
+    if (Array.isArray(windows)) {
+      windows.forEach(window => {
+        chrome.windows.remove(window.id)
+      })
+    } else {
+      chrome.windows.remove(windows.id)
     }
   });
 }
@@ -76,13 +88,7 @@ inputPresetName = () => {
     presetNameInput.parentNode.removeChild(presetNameInput);
     presetNameButton.parentNode.removeChild(presetNameButton);
   };
-}
-
-const saveCurrentPreset = () => {
-  chrome.windows.getAll({ populate: true }, function (windows) {
-    chrome.storage.local.set({ presetstest: windows }, function () {
-    });
-  });
+  presetNameInput.focus();
 }
 
 const saveNewPreset = (presetName) => {
