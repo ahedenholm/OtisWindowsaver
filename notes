@@ -7,18 +7,23 @@ chrome ext window resizer:
   save as v
   open v
   close all other windows checkbox v
-  list of presets
+  list of presets v
+  
  save
   save position all windows with their tabs v
   save all open tabs v
   save size of all windows v
-  save up to three presets
+  save up to three presets v
 
  load
   set position on all windows v
   load all saved tabs v
   set size of all windows v
+  close all other windows
     
+ remove
+  remove a preset
+  
 bugs:
  chrome.windows.create({ state: "maximized" }) causes crash
  https://bugs.chromium.org/p/chromium/issues/detail?id=459841
