@@ -1,20 +1,23 @@
 
 chrome ext window resizer:
  ui
+  grow animation
+  icons
+  save v
+  save as v
+  open v
+  close all other windows checkbox v
   list of presets
-  save as
-  close all other windows checkbox
  save
-  save position all windows with their tabs (window.screenX, screenY)
-  save all open tabs
-  save all size of windows(window.outerHeight, window.innerHeight)
+  save position all windows with their tabs v
+  save all open tabs v
+  save size of all windows v
   save up to three presets
 
  load
-  set position on all windows (window.moveTo)
-  load all saved tabs 
-    window.open("http://myurl.domain", "myWindowName", "resizable");
-  set size of all windows (window.resizeTo)
+  set position on all windows v
+  load all saved tabs v
+  set size of all windows v
     
 bugs:
  chrome.windows.create({ state: "maximized" }) causes crash
