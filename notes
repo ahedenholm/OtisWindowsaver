@@ -2,7 +2,7 @@
 chrome ext window resizer:
  ui
   grow animation
-  icons
+  icons v
   save v
   save as v
   open v
@@ -19,11 +19,11 @@ chrome ext window resizer:
   set position on all windows v
   load all saved tabs v
   set size of all windows v
-  close all other windows
+  close all other windows v
     
  remove
   remove a preset
-  
+
 bugs:
  chrome.windows.create({ state: "maximized" }) causes crash
  https://bugs.chromium.org/p/chromium/issues/detail?id=459841
