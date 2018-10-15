@@ -1,8 +1,9 @@
-
+window.onload = () => loadSavedPresets();
 const openButton = document.getElementById('openButton');
 const saveButton = document.getElementById('saveButton');
 let closeAllWindowsCheckbox = document.getElementById('closeAllWindowsCheckbox');
 let presetList = document.getElementById('presetList');
+
 
 saveButton.onclick = function (element) {
   saveCurrentPreset();
@@ -28,7 +29,7 @@ const openPreset = (chosenPreset) => {
       return;
     }
 
-    if (Array.isArray(windows)){
+    if (Array.isArray(windows)) {
       windows.forEach(window => {
         chrome.windows.create({
           url: window.tabs.map(tab => tab.url),
@@ -87,10 +88,10 @@ const saveCurrentPreset = () => {
 const saveNewPreset = (presetName) => {
   // if (presetList.find(preset => preset.name === presetName)
   //    prompt overwrite
-  
+
   chrome.windows.getAll({ populate: true }, function (windows) {
     chrome.storage.local.set({
-      [presetName]: { name: presetName, windows: windows }
+      [presetName]: { name: presetName, windows: windows, isPreset: true, }
     }, function () {
       let presetListItem = document.createElement("div");
       presetListItem.className = "button width100percent";
@@ -103,3 +104,21 @@ const saveNewPreset = (presetName) => {
     });
   });
 }
+
+const loadSavedPresets = () => {
+  chrome.storage.local.get(null, function (data) {
+    for (var key in data) {
+      if (data[key].isPreset) {
+        let presetListItem = document.createElement("div");
+        presetListItem.className = "button width100percent";
+        presetListItem.textContent = data[key].name;
+        presetListItem.setAttribute("id", data[key].name);
+        presetList.appendChild(presetListItem);
+        presetListItem.onclick = function () {
+          openPreset(data[key].name);
+        }
+      }
+    }
+  });
+}
+
