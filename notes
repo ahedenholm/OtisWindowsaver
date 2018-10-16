@@ -8,6 +8,7 @@ Otis windowsaver:
   open v
   close all other windows checkbox v
   list of presets v
+  trashcan icon on presetListItems
   
  save
   save position all windows with their tabs v
