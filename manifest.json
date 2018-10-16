@@ -1,12 +1,11 @@
 {
   "name": "Otis Windowsaver",
   "short_name": "Windowsaver",
-  "version": "1.0",
+  "version": "1.0.1",
   "description": "Otis will help you save and load the positions and sizes of your browser windows",
   "permissions": [
     "tabs",
     "activeTab",
-    "declarativeContent",
     "storage"
   ],
   "background": {
@@ -15,7 +14,7 @@
     ],
     "persistent": false
   },
-  "page_action": {
+  "browser_action": {
     "default_popup": "popup.html",
     "default_icon": {
       "16": "images/logo16px.png",
