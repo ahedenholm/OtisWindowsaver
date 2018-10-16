@@ -1,7 +1,7 @@
 {
-  "name": "Getting Started Example",
+  "name": "Otiw Windowsaver",
   "version": "1.0",
-  "description": "Build an Extension!",
+  "description": "Otis will help you save and load the positions and sizes of your browser windows",
   "permissions": [
     "tabs",
     "activeTab",
