@@ -1,5 +1,6 @@
 {
-  "name": "Otiw Windowsaver",
+  "name": "Otis Windowsaver",
+  "short_name": "Windowsaver",
   "version": "1.0",
   "description": "Otis will help you save and load the positions and sizes of your browser windows",
   "permissions": [
