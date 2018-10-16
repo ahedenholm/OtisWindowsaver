@@ -1,12 +1,12 @@
-window.onload = () => {
-  loadSavedPresets();
-}
-
 const saveAsButton = document.getElementById('saveAsButton');
 let closeAllWindowsCheckbox = document.getElementById('closeAllWindowsCheckbox');
 let presetList = document.getElementById('presetList');
 
-saveAsButton.onclick = function (element) {
+window.onload = () => { 
+  loadSavedPresets();
+}
+
+saveAsButton.onclick = function () {
   inputPresetName();
 }
 
