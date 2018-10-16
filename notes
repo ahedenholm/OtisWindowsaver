@@ -14,6 +14,7 @@ chrome ext window resizer:
   save all open tabs v
   save size of all windows v
   save up to three presets v
+  overwrite prompt 
 
  load
   set position on all windows v
@@ -25,6 +26,6 @@ chrome ext window resizer:
   remove a preset
 
 bugs:
- chrome.windows.create({ state: "maximized" }) causes crash
+ *chrome.windows.create({ state: "maximized, fullscreen, maybe more" }) causes crash
  https://bugs.chromium.org/p/chromium/issues/detail?id=459841
  hence no fullscreened windows...
