@@ -4,6 +4,9 @@
 .marginRight5px { margin-right: 5px; }
 .width100percent { width: 100%; }
 .fontSize1rem { font-size: 1rem; }
+.positionAbsolute { position: absolute; }
+.positionRelative { position: relative; }
+.right10px { right: 10px; }
 .displayFlex { display: -webkit-box; display: -ms-flexbox; display: flex; }
 .displayNone { display: none; }
 .flexCenter { -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }

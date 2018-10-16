@@ -1,5 +1,4 @@
 window.onload = () => {
-  // chrome.storage.local.clear((msg) => console.log(msg));  
   loadSavedPresets();
 }
 
@@ -9,7 +8,7 @@ let presetList = document.getElementById('presetList');
 
 saveAsButton.onclick = function (element) {
   inputPresetName();
-};
+}
 
 const inputPresetName = () => {
   let presetNameInput = document.createElement("input");
@@ -55,13 +54,23 @@ const loadSavedPresets = () => {
 
 const createPresetListItem = (presetName) => {
   let presetListItem = document.createElement("div");
-  presetListItem.className = "button width100percent";
+  presetListItem.className = "button width100percent positionRelative displayFlex flexCenter";
   presetListItem.textContent = presetName;
   presetListItem.setAttribute("id", presetName);
   presetListItem.addEventListener('click', () => openPreset(presetName));
   presetList.appendChild(presetListItem);
-};
-
+  
+  let deleteIcon = document.createElement("img");
+  deleteIcon.className = "positionAbsolute right10px";
+  deleteIcon.setAttribute("src", "./images/baseline_delete_black_18dp.png");
+  deleteIcon.addEventListener('click', () => deletePreset(presetName));
+  presetListItem.appendChild(deleteIcon);
+}
+const deletePreset = (presetName) => {
+  chrome.storage.local.remove(presetName);
+  let preset = document.getElementById(presetName);
+  preset.parentNode.removeChild(preset);
+}
 const openPreset = (chosenPreset) => {
   let windows;
   // async might cause problems here
