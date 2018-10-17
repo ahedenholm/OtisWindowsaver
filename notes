@@ -7,8 +7,9 @@ Otis windowsaver:
   save as v
   open v
   close all other windows checkbox v
+  checkbox is lined up straight with its text
   list of presets v
-  trashcan icon on presetListItems
+  trashcan icon on presetListItems v
   
  save
   save position all windows with their tabs v
@@ -24,7 +25,7 @@ Otis windowsaver:
   close all other windows v
     
  remove
-  remove a preset
+  remove a preset v
 
 bugs:
  *chrome.windows.create({ state: "maximized, fullscreen, maybe more" }) causes crash
