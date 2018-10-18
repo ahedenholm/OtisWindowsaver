@@ -61,7 +61,7 @@ const createPresetListItem = (presetName) => {
   presetList.appendChild(presetListItem);
   
   let deleteIcon = document.createElement("img");
-  deleteIcon.className = "positionAbsolute right10px";
+  deleteIcon.className = "positionAbsolute right10px opacityHover0p3";
   deleteIcon.setAttribute("src", "./images/baseline_delete_black_18dp.png");
   deleteIcon.addEventListener('click', () => deletePreset(presetName));
   presetListItem.appendChild(deleteIcon);
