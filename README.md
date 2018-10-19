@@ -4,6 +4,4 @@
 - Skeleton css - http://getskeleton.com/
 - Chrome API - https://developer.chrome.com/extensions/devguide
 
-#### Features to implement
-- Change place of a preset in the list, drag and drop
 
