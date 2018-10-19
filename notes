@@ -1,18 +1,18 @@
 
 Otis windowsaver:
  ui
-  grow animation
   icons v
   save v
   save as v
   open v
   close all other windows checkbox v
-  checkbox is lined up straight with its text
+  checkbox is lined up straight with its text v
   list of presets v
   trashcan icon on presetListItems v
-  change place of preset, drag and drop
   trashcan hover effect v
-  
+  grow animation
+  change place of preset, drag and drop
+
  save
   save position all windows with their tabs v
   save all open tabs v
