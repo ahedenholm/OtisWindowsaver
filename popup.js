@@ -1,13 +1,56 @@
 const saveAsButton = document.getElementById('saveAsButton');
+const importButton = document.getElementById('importButton');
+const exportButton = document.getElementById('exportButton');
 let closeAllWindowsCheckbox = document.getElementById('closeAllWindowsCheckbox');
 let presetList = document.getElementById('presetList');
 
-window.onload = () => { 
+window.onload = () => {
   loadSavedPresets();
+  importButton.onchange = importPresets;
 }
 
 saveAsButton.onclick = function () {
   inputPresetName();
+}
+exportButton.onclick = function () {
+  exportPresets();
+}
+
+const importPresets = () => {
+  let files = importButton.files;
+  if (files.length <= 0) {
+    return false;
+  }
+
+  var fr = new FileReader();
+  fr.onload = function (event) {
+    let parsedPresets = JSON.parse(event.target.result);
+    for (var key in parsedPresets) {
+      let presetName = parsedPresets[key].name;
+      if (parsedPresets[key].isPreset){
+        chrome.storage.local.set({
+          [parsedPresets[key].name]: {
+            name: parsedPresets[key].name,
+            windows: parsedPresets[key].windows,
+            isPreset: parsedPresets[key].isPreset,
+          }
+        }, function () {
+          createPresetListItem(presetName);
+        });
+      }
+    }
+  }
+  fr.readAsText(files.item(0));
+}
+
+const exportPresets = () => {
+  chrome.storage.local.get(null, function (presets) {
+    var dataStr = "data:text/json;charset=utf-8," + JSON.stringify(presets);
+    var dlAnchorElem = document.createElement('a');
+    dlAnchorElem.setAttribute("href", dataStr);
+    dlAnchorElem.setAttribute("download", "OtisWindowsaverPresets.json");
+    dlAnchorElem.click();
+  });
 }
 
 const inputPresetName = () => {
@@ -59,7 +102,7 @@ const createPresetListItem = (presetName) => {
   presetListItem.setAttribute("id", presetName);
   presetListItem.addEventListener('click', () => openPreset(presetName));
   presetList.appendChild(presetListItem);
-  
+
   let deleteIcon = document.createElement("img");
   deleteIcon.className = "positionAbsolute right10px opacityHover0p3";
   deleteIcon.setAttribute("src", "./images/baseline_delete_black_18dp.png");
