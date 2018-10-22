@@ -159,6 +159,8 @@ const closeAllWindows = () => {
     windows.forEach(window => {
       chrome.windows.remove(window.id)
     })
+    // setTimeout( 0) causes code to wait until the current callback stack is clear before being triggered
+    // otherwise closeAllWindows sometimes closes the browser and no preset windows are opened
     , 0)
   });
 }
