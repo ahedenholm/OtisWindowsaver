@@ -26,6 +26,8 @@ const importPresets = () => {
   fr.onload = function (event) {
     let parsedPresets = JSON.parse(event.target.result);
     for (var key in parsedPresets) {
+
+      // presetName = parsedPresets[key].name helps avoid async issues when calling createPresetListItem()
       let presetName = parsedPresets[key].name;
       if (parsedPresets[key].isPreset){
         chrome.storage.local.set({
@@ -109,14 +111,16 @@ const createPresetListItem = (presetName) => {
   deleteIcon.addEventListener('click', () => deletePreset(presetName));
   presetListItem.appendChild(deleteIcon);
 }
+
 const deletePreset = (presetName) => {
   chrome.storage.local.remove(presetName);
   let preset = document.getElementById(presetName);
   preset.parentNode.removeChild(preset);
 }
+
 const openPreset = (chosenPreset) => {
   let windows;
-  // async might cause problems here
+  // TODO async might cause problems here
   if (closeAllWindowsCheckbox.checked) {
     closeAllWindows();
   }
@@ -151,8 +155,10 @@ const openPreset = (chosenPreset) => {
 
 const closeAllWindows = () => {
   chrome.windows.getAll(function (windows) {
+    setTimeout(() => 
     windows.forEach(window => {
       chrome.windows.remove(window.id)
     })
+    , 0)
   });
 }
