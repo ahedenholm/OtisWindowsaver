@@ -16,6 +16,52 @@ exportButton.onclick = function () {
   exportPresets();
 }
 
+chrome.commands.onCommand.addListener(function (command) {
+  switch (command) {
+    case "OpenPreset1": {
+      const presetName = getPresetNames()[0];
+      if (presetName)
+        openPreset(presetName);
+      break;
+    }
+    case "OpenPreset2": {
+      const presetName = getPresetNames()[1];
+      if (presetName)
+        openPreset(presetName);
+      break;
+    }
+    case "OpenPreset3": {
+      const presetName = getPresetNames()[2];
+      if (presetName)
+        openPreset(presetName);
+      break;
+    }
+    case "OpenPreset4": {
+      const presetName = getPresetNames()[3];
+      if (presetName)
+        openPreset(presetName);
+      break;
+    }
+    case "OpenPreset5": {
+      const presetName = getPresetNames()[4];
+      if (presetName)
+        openPreset(presetName);
+      break;
+    }
+  }
+});
+
+const getPresetNames = () => {
+  let presetElements = presetList.childNodes;
+  let presetNamesArray = [];
+  presetElements.forEach(element => {
+    if (element.id) {
+      presetNamesArray.push(element.id);
+    }
+  })
+  return presetNamesArray;
+}
+
 const importPresets = () => {
   let files = importButton.files;
   if (files.length <= 0) {
@@ -29,7 +75,7 @@ const importPresets = () => {
 
       // presetName = parsedPresets[key].name helps avoid async issues when calling createPresetListItem()
       let presetName = parsedPresets[key].name;
-      if (parsedPresets[key].isPreset){
+      if (parsedPresets[key].isPreset) {
         chrome.storage.local.set({
           [parsedPresets[key].name]: {
             name: parsedPresets[key].name,
@@ -120,7 +166,6 @@ const deletePreset = (presetName) => {
 
 const openPreset = (chosenPreset) => {
   let windows;
-  // TODO async might cause problems here
   if (closeAllWindowsCheckbox.checked) {
     closeAllWindows();
   }
@@ -155,12 +200,12 @@ const openPreset = (chosenPreset) => {
 
 const closeAllWindows = () => {
   chrome.windows.getAll(function (windows) {
-    setTimeout(() => 
-    windows.forEach(window => {
-      chrome.windows.remove(window.id)
-    })
-    // setTimeout( 0) causes code to wait until the current callback stack is clear before being triggered
-    // otherwise closeAllWindows sometimes closes the browser and no preset windows are opened
-    , 0)
+    setTimeout(() =>
+      windows.forEach(window => {
+        chrome.windows.remove(window.id)
+      })
+      // setTimeout( 0) causes code to wait until the current callback stack is clear before being triggered
+      // otherwise closeAllWindows sometimes closes the browser and no preset windows are opened
+      , 0)
   });
 }

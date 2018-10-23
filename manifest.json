@@ -10,7 +10,8 @@
   ],
   "background": {
     "scripts": [
-      "background.js"
+      "background.js",
+      "popup.js"
     ],
     "persistent": false
   },
@@ -23,11 +24,28 @@
       "128": "images/logo128px.png"
     }
   },
-  "icons": {
-    "16": "images/logo16px.png",
-    "32": "images/logo32px.png",
-    "48": "images/logo48px.png",
-    "128": "images/logo128px.png"
+  "commands": {
+    "OpenPreset1": {
+      "description": "Open preset 1"
+    },
+    "OpenPreset2": {
+      "description": "Open preset 2"
+    },
+    "OpenPreset3": {
+      "description": "Open preset 3"
+    },
+    "OpenPreset4": {
+      "description": "Open preset 4"
+    },
+    "OpenPreset5": {
+      "description": "Open preset 5"
+    }
   },
-  "manifest_version": 2
-}
+    "icons": {
+      "16": "images/logo16px.png",
+      "32": "images/logo32px.png",
+      "48": "images/logo48px.png",
+      "128": "images/logo128px.png"
+    },
+    "manifest_version": 2
+  }
