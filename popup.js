@@ -5,7 +5,7 @@ let closeAllWindowsCheckbox = document.getElementById('closeAllWindowsCheckbox')
 let presetList = document.getElementById('presetList');
 
 window.onload = () => {
-  loadSavedPresets();
+  renderSavedPresets();
   importButton.onchange = importPresets;
 }
 
@@ -133,7 +133,7 @@ const saveNewPreset = (presetName) => {
   });
 }
 
-const loadSavedPresets = () => {
+const renderSavedPresets = () => {
   chrome.storage.local.get(null, function (data) {
     for (var key in data) {
       if (data[key].isPreset) {
