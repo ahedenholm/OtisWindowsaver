@@ -10,6 +10,7 @@ Otis windowsaver:
   list of presets v
   trashcan icon on presetListItems v
   trashcan hover effect v
+  keyboard shortcuts optional v  ( https://developer.chrome.com/extensions/commands )
   grow animation
   change place of preset, drag and drop
 
