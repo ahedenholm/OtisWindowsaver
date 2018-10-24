@@ -1,8 +1,8 @@
 const saveAsButton = document.getElementById('saveAsButton');
 const importButton = document.getElementById('importButton');
 const exportButton = document.getElementById('exportButton');
-let closeAllWindowsCheckbox = document.getElementById('closeAllWindowsCheckbox');
-let presetList = document.getElementById('presetList');
+const presetList = document.getElementById('presetList');
+const closeAllWindowsCheckbox = document.getElementById('closeAllWindowsCheckbox');
 
 window.onload = () => {
   renderSavedPresets();
@@ -107,15 +107,16 @@ const inputPresetName = () => {
   presetNameInput.setAttribute("type", "text");
   presetNameInput.setAttribute("placeholder", "Enter preset name");
   presetNameButton.setAttribute("class", "button width100percent");
-  presetNameButton.setAttribute("id", "presetNameButton");
   saveAsButton.parentNode.appendChild(presetNameInput);
   saveAsButton.parentNode.appendChild(presetNameButton);
   presetNameButton.appendChild(document.createTextNode('OK'));
 
   presetNameButton.onclick = function () {
-    saveNewPreset(presetNameInput.value);
-    presetNameInput.parentNode.removeChild(presetNameInput);
-    presetNameButton.parentNode.removeChild(presetNameButton);
+    if (presetNameInput.value !== null && presetNameInput.value !== undefined && presetNameInput.value.trim() !== "") {
+      saveNewPreset(presetNameInput.value);
+      presetNameInput.parentNode.removeChild(presetNameInput);
+      presetNameButton.parentNode.removeChild(presetNameButton);
+    }
   };
   presetNameInput.focus();
 }
