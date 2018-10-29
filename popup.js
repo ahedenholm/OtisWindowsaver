@@ -10,8 +10,14 @@ window.onload = () => {
 }
 
 saveAsButton.onclick = function () {
-  inputPresetName();
+  if (!document.getElementById("presetNameInput")) {
+    inputPresetName();
+  } else {
+    document.getElementById("presetNameInput").parentNode.removeChild(document.getElementById("presetNameInput"));
+    document.getElementById("presetNameButton").parentNode.removeChild(document.getElementById("presetNameButton"));
+  }
 }
+
 exportButton.onclick = function () {
   exportPresets();
 }
@@ -107,7 +113,9 @@ const inputPresetName = () => {
   presetNameInput.setAttribute("type", "text");
   presetNameInput.setAttribute("placeholder", "Enter preset name");
   presetNameInput.setAttribute("class", "width100percent");
+  presetNameInput.setAttribute("id", "presetNameInput");
   presetNameButton.setAttribute("class", "button width100percent");
+  presetNameButton.setAttribute("id", "presetNameButton");
   saveAsButton.parentNode.insertBefore(presetNameButton, saveAsButton.nextSibling);
   saveAsButton.parentNode.insertBefore(presetNameInput, saveAsButton.nextSibling);
   presetNameButton.appendChild(document.createTextNode('OK'));
