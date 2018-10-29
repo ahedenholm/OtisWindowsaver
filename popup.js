@@ -182,19 +182,34 @@ const openPreset = (chosenPreset) => {
     }
 
     windows.forEach(window => {
-      chrome.windows.create({
-        url: window.tabs.map(tab => tab.url),
-        left: window.left,
-        top: window.top,
-        width: window.width,
-        height: window.height,
-        focused: window.focused,
-        incognito: window.incognito,
-        type: window.type,
-        // see bug with setting state here:
-        // https://bugs.chromium.org/p/chromium/issues/detail?id=459841
-        // state: window.state
-      });
+      let isMinMaxOrFull = (window.state === "minimized" || window.state === "maximized" || window.state === "fullscreen");
+      // see bug with setting state here:
+      // https://bugs.chromium.org/p/chromium/issues/detail?id=459841
+      // minimized, maximized, fullscreen states are not compatible with left, top, width, height
+      // minimized is not compatible with focused: true
+      // maximized, fullscreen are not compatible with focused: false
+      // https://developer.chrome.com/extensions/windows#method-create
+      if (!isMinMaxOrFull) {
+        chrome.windows.create({
+          url: window.tabs.map(tab => tab.url),
+          left: window.left,
+          top: window.top,
+          width: window.width,
+          height: window.height,
+          focused: window.focused,
+          incognito: window.incognito,
+          type: window.type,
+          state: window.state
+        });
+      } else {
+        chrome.windows.create({
+          url: window.tabs.map(tab => tab.url),
+          focused: window.state === "minimized" ? false : true,
+          incognito: window.incognito,
+          type: window.type,
+          state: window.state
+        });
+      }
     });
   });
 }
