@@ -106,9 +106,10 @@ const inputPresetName = () => {
   let presetNameButton = document.createElement("button");
   presetNameInput.setAttribute("type", "text");
   presetNameInput.setAttribute("placeholder", "Enter preset name");
+  presetNameInput.setAttribute("class", "width100percent");
   presetNameButton.setAttribute("class", "button width100percent");
-  saveAsButton.parentNode.appendChild(presetNameInput);
-  saveAsButton.parentNode.appendChild(presetNameButton);
+  saveAsButton.parentNode.insertBefore(presetNameButton, saveAsButton.nextSibling);
+  saveAsButton.parentNode.insertBefore(presetNameInput, saveAsButton.nextSibling);
   presetNameButton.appendChild(document.createTextNode('OK'));
 
   presetNameButton.onclick = function () {
