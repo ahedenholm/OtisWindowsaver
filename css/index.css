@@ -15,3 +15,19 @@
 .opacityHover0p3:hover { opacity: 0.3; }
 .marginBottom1p5rem { margin-bottom: 1.5rem }
 .marginTop1p5rem { margin-top: 1.5rem }
+.padding24pxLeftRightTop { padding-left: 24px; padding-right: 24px; padding-top: 24px; }
+.bgDark { background: rgba(38, 116, 128, 1); }
+/*
+    84, 77, 192
+    77, 139, 192
+    38, 116, 128
+*/
+.colorWhite { color: white; }
+.listItem {
+  text-align: left !important;
+  border: 0px;
+}
+.listItem:hover {
+  border: 1px solid #bbb;
+  cursor: pointer;
+}

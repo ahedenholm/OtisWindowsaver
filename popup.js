@@ -114,7 +114,7 @@ const inputPresetName = () => {
   presetNameInput.setAttribute("placeholder", "Enter preset name");
   presetNameInput.setAttribute("class", "width100percent");
   presetNameInput.setAttribute("id", "presetNameInput");
-  presetNameButton.setAttribute("class", "button width100percent");
+  presetNameButton.setAttribute("class", "button width100percent colorWhite");
   presetNameButton.setAttribute("id", "presetNameButton");
   saveAsButton.parentNode.insertBefore(presetNameButton, saveAsButton.nextSibling);
   saveAsButton.parentNode.insertBefore(presetNameInput, saveAsButton.nextSibling);
@@ -155,7 +155,7 @@ const renderSavedPresets = () => {
 
 const createPresetListItem = (presetName) => {
   let presetListItem = document.createElement("div");
-  presetListItem.className = "button width100percent positionRelative displayFlex flexCenter";
+  presetListItem.className = "button width100percent positionRelative displayFlex alignItemsCenter";
   presetListItem.textContent = presetName;
   presetListItem.setAttribute("id", presetName);
   presetListItem.addEventListener('click', () => openPreset(presetName));
