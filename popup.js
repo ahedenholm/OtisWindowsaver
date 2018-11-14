@@ -12,9 +12,9 @@ window.onload = () => {
 closeAllWindowsCheckbox.onclick = function () {
   let checkboxImage = document.getElementById("checkboxImage");
   if (closeAllWindowsCheckbox.checked){
-    checkboxImage.setAttribute("src", "/images/baseline_check_box_white_18dp.png");
+    checkboxImage.setAttribute("src", "/images/baseline-check_box-24px.svg");
   } else {
-    checkboxImage.setAttribute("src", "/images/baseline_check_box_outline_blank_white_18dp.png");
+    checkboxImage.setAttribute("src", "/images/baseline-check_box_outline_blank-24px.svg");
   }
 }
 
@@ -173,7 +173,8 @@ const createPresetListItem = (presetName) => {
 
   let deleteIcon = document.createElement("img");
   deleteIcon.className = "positionAbsolute right10px opacityHover0p3";
-  deleteIcon.setAttribute("src", "./images/baseline_delete_black_18dp.png");
+  deleteIcon.setAttribute("src", "./images/baseline-delete-24px.svg");
+  deleteIcon.setAttribute("height", "18px");
   deleteIcon.addEventListener('click', () => deletePreset(presetName));
   presetListItem.appendChild(deleteIcon);
 }
