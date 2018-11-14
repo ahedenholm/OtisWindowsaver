@@ -4,7 +4,7 @@
 .marginRight5px { margin-right: 5px; }
 .width100percent { width: 100%; }
 .fontSize1rem { font-size: 1rem; }
-.fontSize1p4rem { font-size: 1.4rem; }
+.fontSize1p3rem { font-size: 1.3rem; }
 .positionAbsolute { position: absolute; }
 .positionRelative { position: relative; }
 .right10px { right: 10px; }
@@ -18,7 +18,7 @@
 .marginTop1p5rem { margin-top: 1.5rem }
 .padding6px { padding-right: 6px; }
 .paddingBottom6px { padding-bottom: 6px; }
-.paddingBottom12px { padding-bottom: 12px; }
+.paddingBottom16px { padding-bottom: 16px; }
 .paddingBottom24px { padding-bottom: 24px; }
 .padding24pxLeftRightTop { padding-left: 24px; padding-right: 24px; padding-top: 24px; }
 .padding12pxLeftRightTop { padding-left: 12px; padding-right: 12px; padding-top: 12px; }
