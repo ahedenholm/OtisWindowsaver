@@ -15,8 +15,15 @@
 .opacityHover0p3:hover { opacity: 0.3; }
 .marginBottom1p5rem { margin-bottom: 1.5rem }
 .marginTop1p5rem { margin-top: 1.5rem }
+.padding6px { padding-right: 6px; }
+.paddingBottom6px { padding-bottom: 6px; }
+.paddingBottom24px { padding-bottom: 24px; }
 .padding24pxLeftRightTop { padding-left: 24px; padding-right: 24px; padding-top: 24px; }
-.bgDark { background: rgba(38, 116, 128, 1); }
+.bgDark { 
+  background: rgb(8,99,116);
+  background: linear-gradient(90deg, rgba(8,99,116,1) 0%, rgba(5,53,74,1) 100%); 
+}
+.bgLight { background: #f0eec9; }
 /*
     84, 77, 192
     77, 139, 192

@@ -9,6 +9,15 @@ window.onload = () => {
   importButton.onchange = importPresets;
 }
 
+closeAllWindowsCheckbox.onclick = function () {
+  let checkboxImage = document.getElementById("checkboxImage");
+  if (closeAllWindowsCheckbox.checked){
+    checkboxImage.setAttribute("src", "/images/baseline_check_box_white_18dp.png");
+  } else {
+    checkboxImage.setAttribute("src", "/images/baseline_check_box_outline_blank_white_18dp.png");
+  }
+}
+
 saveAsButton.onclick = function () {
   if (!document.getElementById("presetNameInput")) {
     inputPresetName();
