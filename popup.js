@@ -119,14 +119,15 @@ const exportPresets = () => {
 const inputPresetName = () => {
   let presetNameInput = document.createElement("input");
   let presetNameButton = document.createElement("button");
+  let closeAllWindowsLabel = document.getElementById("closeAllWindowsLabel");
   presetNameInput.setAttribute("type", "text");
   presetNameInput.setAttribute("placeholder", "Enter preset name");
   presetNameInput.setAttribute("class", "width100percent");
   presetNameInput.setAttribute("id", "presetNameInput");
   presetNameButton.setAttribute("class", "button width100percent colorWhite");
   presetNameButton.setAttribute("id", "presetNameButton");
-  saveAsButton.parentNode.insertBefore(presetNameButton, saveAsButton.nextSibling);
-  saveAsButton.parentNode.insertBefore(presetNameInput, saveAsButton.nextSibling);
+  closeAllWindowsLabel.parentNode.insertBefore(presetNameInput, closeAllWindowsLabel);
+  closeAllWindowsLabel.parentNode.insertBefore(presetNameButton, closeAllWindowsLabel);
   presetNameButton.appendChild(document.createTextNode('OK'));
 
   presetNameButton.onclick = function () {
@@ -164,7 +165,7 @@ const renderSavedPresets = () => {
 
 const createPresetListItem = (presetName) => {
   let presetListItem = document.createElement("div");
-  presetListItem.className = "button width100percent positionRelative displayFlex alignItemsCenter";
+  presetListItem.className = "button width100percent positionRelative displayFlex alignItemsCenter listItem";
   presetListItem.textContent = presetName;
   presetListItem.setAttribute("id", presetName);
   presetListItem.addEventListener('click', () => openPreset(presetName));

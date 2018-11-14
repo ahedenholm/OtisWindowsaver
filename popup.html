@@ -10,28 +10,27 @@
 
 <body>
   <div class="">
-    <div class="bgDark padding24pxLeftRightTop ">
 
-      <button class="button-primary button width100percent" id="saveAsButton">SAVE AS</button>
-      
+    <div class="bgDark padding12pxLeftRightTop ">
       <div class="displayFlex flexRow ">
+        <button class="button-primary button width100percent" id="saveAsButton">SAVE AS</button>
         <label class="button-primary button marginRight5px width100percent">
           <input type="file" accept=".json" name="json" hidden id="importButton" />IMPORT
         </label>
         <button class="button-primary button width100percent" id="exportButton">EXPORT</button>
       </div>
-      
-      <label class="displayFlex flexCenter paddingBottom6px">
-        <img src="images/baseline_check_box_outline_blank_white_18dp.png" id="checkboxImage" class="icon padding6px" height="15px">
+
+      <label class="displayFlex flexCenter paddingBottom12px" id="closeAllWindowsLabel">
+        <img src="images/baseline_check_box_outline_blank_white_18dp.png" id="checkboxImage" class="icon padding6px"
+          height="15px">
         <input type="checkbox" class="" id="closeAllWindowsCheckbox" hidden>
-        <span class="colorWhite">Close all other windows</span>
+        <span class="colorWhite fontSize1p4rem">Close all other windows</span>
       </label>
-  
-      
     </div>
 
-    <div class="row padding24pxLeftRightTop" id="presetList">
+    <div class="row padding12pxLeftRightTop" id="presetList">
     </div>
+
   </div>
 
   <script src="popup.js"></script>

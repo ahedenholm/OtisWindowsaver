@@ -4,6 +4,7 @@
 .marginRight5px { margin-right: 5px; }
 .width100percent { width: 100%; }
 .fontSize1rem { font-size: 1rem; }
+.fontSize1p4rem { font-size: 1.4rem; }
 .positionAbsolute { position: absolute; }
 .positionRelative { position: relative; }
 .right10px { right: 10px; }
@@ -17,11 +18,18 @@
 .marginTop1p5rem { margin-top: 1.5rem }
 .padding6px { padding-right: 6px; }
 .paddingBottom6px { padding-bottom: 6px; }
+.paddingBottom12px { padding-bottom: 12px; }
 .paddingBottom24px { padding-bottom: 24px; }
 .padding24pxLeftRightTop { padding-left: 24px; padding-right: 24px; padding-top: 24px; }
+.padding12pxLeftRightTop { padding-left: 12px; padding-right: 12px; padding-top: 12px; }
 .bgDark { 
   background: rgb(8,99,116);
   background: linear-gradient(90deg, rgba(8,99,116,1) 0%, rgba(5,53,74,1) 100%); 
+  background: rgb(255,88,88);
+background: linear-gradient(90deg, rgba(255,88,88,1) 0%, rgba(255,94,46,1) 100%);
+background: rgb(27,146,138);
+background: linear-gradient(90deg, rgba(27,146,138,1) 0%, rgba(8,99,114,1) 100%);
+
 }
 .bgLight { background: #f0eec9; }
 /*
