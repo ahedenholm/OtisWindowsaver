@@ -1,12 +1,12 @@
 const saveAsButton = document.getElementById('saveAsButton');
-const importButton = document.getElementById('importButton');
+const importInput = document.getElementById('importInput');
 const exportButton = document.getElementById('exportButton');
 const presetList = document.getElementById('presetList');
 const closeAllWindowsCheckbox = document.getElementById('closeAllWindowsCheckbox');
 
 window.onload = () => {
   renderSavedPresets();
-  importButton.onchange = importPresets;
+  importInput.onchange = importPresets;
 }
 
 closeAllWindowsCheckbox.onclick = function () {
@@ -78,7 +78,7 @@ const getPresetNames = () => {
 }
 
 const importPresets = () => {
-  let files = importButton.files;
+  let files = importInput.files;
   if (files.length <= 0) {
     return false;
   }

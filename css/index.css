@@ -1,6 +1,3 @@
-
-.marginTop1rem { margin-top: 1rem; }
-.marginTop20px { margin-top: 20px; }
 .marginRight5px { margin-right: 5px; }
 .width100percent { width: 100%; }
 .fontSize1rem { font-size: 1rem; }
@@ -17,34 +14,23 @@
 .marginBottom1p5rem { margin-bottom: 1.5rem }
 .marginTop1p5rem { margin-top: 1.5rem }
 .padding6px { padding-right: 6px; }
-.paddingBottom6px { padding-bottom: 6px; }
 .paddingBottom16px { padding-bottom: 16px; }
-.paddingBottom24px { padding-bottom: 24px; }
 .paddingLeft11px { padding-left: 11px; }
-.padding24pxLeftRightTop { padding-left: 24px; padding-right: 24px; padding-top: 24px; }
 .padding12pxLeftRightTop { padding-left: 12px; padding-right: 12px; padding-top: 12px; }
-.bgDark { 
+.listItem { text-align: left !important; border: 0px; }
+.listItem:hover { border: 1px solid #bbb; cursor: pointer; }
+.bgRed { background: linear-gradient(90deg, rgba(255,88,88,1) 0%, rgba(255,94,46,1) 100%); }
+.colorWhite { color: white; }
+.fontLobster { font-family: 'Lobster', cursive; font-size: 4rem; color:white; }
+
+/*
+  linear-gradient(90deg, rgb(255, 111, 63) 0%, rgb(255, 59, 0) 100%);
   background: rgb(8,99,116);
+  background: rgb(255,88,88); 
   background: linear-gradient(90deg, rgba(8,99,116,1) 0%, rgba(5,53,74,1) 100%); 
   background: rgb(27,146,138);
   background: linear-gradient(90deg, rgba(27,146,138,1) 0%, rgba(8,99,114,1) 100%);
-  background: rgb(255,88,88);
-background: linear-gradient(90deg, rgba(255,88,88,1) 0%, rgba(255,94,46,1) 100%);
-
-}
-.fontLobster { font-family: 'Lobster', cursive; font-size: 4rem; color:white; }
-.bgLight { background: #f0eec9; }
-/*
     84, 77, 192
     77, 139, 192
     38, 116, 128
 */
-.colorWhite { color: white; }
-.listItem {
-  text-align: left !important;
-  border: 0px;
-}
-.listItem:hover {
-  border: 1px solid #bbb;
-  cursor: pointer;
-}
