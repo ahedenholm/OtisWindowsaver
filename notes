@@ -19,7 +19,7 @@ Otis windowsaver:
   save all open tabs v
   save size of all windows v
   save up to three presets v
-  overwrite prompt 
+  overwrite prompt v
 
  load
   set position on all windows v
@@ -29,8 +29,3 @@ Otis windowsaver:
     
  remove
   remove a preset v
-
-bugs:
- *chrome.windows.create({ state: "maximized, fullscreen, maybe more" }) causes crash
- https://bugs.chromium.org/p/chromium/issues/detail?id=459841
- hence no fullscreened windows...
