@@ -4,6 +4,10 @@ const exportButton = document.getElementById('exportButton');
 const presetList = document.getElementById('presetList');
 const closeAllWindowsCheckbox = document.getElementById('closeAllWindowsCheckbox');
 
+const overwriteModal = document.getElementById("overwriteModal");
+const modalYesButton = document.getElementById("modalYesButton");
+const modalNoButton = document.getElementById("modalNoButton");
+
 window.onload = () => {
   renderSavedPresets();
   importInput.onchange = importPresets;
@@ -132,7 +136,11 @@ const inputPresetName = () => {
 
   presetNameButton.onclick = function () {
     if (presetNameInput.value !== null && presetNameInput.value !== undefined && presetNameInput.value.trim() !== "") {
-      saveNewPreset(presetNameInput.value);
+      if (isPresetNameTaken(presetNameInput.value)){
+        showOverwriteModal(presetNameInput.value);
+      } else {
+        saveNewPreset(presetNameInput.value);
+      }
       presetNameInput.parentNode.removeChild(presetNameInput);
       presetNameButton.parentNode.removeChild(presetNameButton);
     }
@@ -140,15 +148,33 @@ const inputPresetName = () => {
   presetNameInput.focus();
 }
 
-const saveNewPreset = (presetName) => {
-  // if (presetList.find(preset => preset.name === presetName)
-  //    prompt overwrite
+const isPresetNameTaken = (presetName) => {
+  if (getPresetNames().includes(presetName)){
+    return true;
+  } else {
+    return false;
+  }
+}
 
+const showOverwriteModal = (presetName) => {
+  modalYesButton.onclick = function () { 
+    saveNewPreset(presetName, true);
+    overwriteModal.setAttribute("class", "modal displayFlex flexCenter flexColumn displayNone");
+  }
+  modalNoButton.onclick = function () {
+    overwriteModal.setAttribute("class", "modal displayFlex flexCenter flexColumn displayNone");
+  }
+  overwriteModal.classList.remove("displayNone");
+}
+
+const saveNewPreset = (presetName, isOverwritten) => {
   chrome.windows.getAll({ populate: true }, function (windows) {
     chrome.storage.local.set({
       [presetName]: { name: presetName, windows: windows, isPreset: true, }
     }, function () {
-      createPresetListItem(presetName);
+      if(!isOverwritten){
+        createPresetListItem(presetName);
+      }
     });
   });
 }
