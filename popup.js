@@ -81,7 +81,7 @@ const getPresetNames = () => {
   return presetNamesArray;
 }
 
-const importPresets = () => {
+function importPresets() {
   let files = importInput.files;
   if (files.length <= 0) {
     return false;
@@ -128,24 +128,27 @@ const inputPresetName = () => {
   presetNameInput.setAttribute("placeholder", "Enter preset name");
   presetNameInput.setAttribute("class", "width100percent");
   presetNameInput.setAttribute("id", "presetNameInput");
+  presetNameInput.addEventListener('keydown', (e) => { if(e.keyCode === 13) initSaveNewPreset(presetNameInput, presetNameButton)});
   presetNameButton.setAttribute("class", "button width100percent colorWhite");
   presetNameButton.setAttribute("id", "presetNameButton");
   closeAllWindowsLabel.parentNode.insertBefore(presetNameInput, closeAllWindowsLabel);
   closeAllWindowsLabel.parentNode.insertBefore(presetNameButton, closeAllWindowsLabel);
   presetNameButton.appendChild(document.createTextNode('OK'));
 
-  presetNameButton.onclick = function () {
-    if (presetNameInput.value !== null && presetNameInput.value !== undefined && presetNameInput.value.trim() !== "") {
-      if (isPresetNameTaken(presetNameInput.value)){
-        showOverwriteModal(presetNameInput.value);
-      } else {
-        saveNewPreset(presetNameInput.value);
-      }
-      presetNameInput.parentNode.removeChild(presetNameInput);
-      presetNameButton.parentNode.removeChild(presetNameButton);
-    }
-  };
+  presetNameButton.onclick = function () { initSaveNewPreset(presetNameInput, presetNameButton); };
   presetNameInput.focus();
+}
+
+function initSaveNewPreset(presetNameInput, presetNameButton){
+  if (presetNameInput.value !== null && presetNameInput.value !== undefined && presetNameInput.value.trim() !== "") {
+    if (isPresetNameTaken(presetNameInput.value)){
+      showOverwriteModal(presetNameInput.value);
+    } else {
+      saveNewPreset(presetNameInput.value);
+    }
+    presetNameInput.parentNode.removeChild(presetNameInput);
+    presetNameButton.parentNode.removeChild(presetNameButton);
+  }
 }
 
 const isPresetNameTaken = (presetName) => {
@@ -179,7 +182,7 @@ const saveNewPreset = (presetName, isOverwritten) => {
   });
 }
 
-const renderSavedPresets = () => {
+function renderSavedPresets() {
   chrome.storage.local.get(null, function (data) {
     for (var key in data) {
       if (data[key].isPreset) {
