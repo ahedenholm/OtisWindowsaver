@@ -15,7 +15,7 @@ window.onload = () => {
 
 closeAllWindowsCheckbox.onclick = function () {
   let checkboxImage = document.getElementById("checkboxImage");
-  if (closeAllWindowsCheckbox.checked){
+  if (closeAllWindowsCheckbox.checked) {
     checkboxImage.setAttribute("src", "/images/baseline-check_box-24px.svg");
   } else {
     checkboxImage.setAttribute("src", "/images/baseline-check_box_outline_blank-24px.svg");
@@ -128,7 +128,7 @@ const inputPresetName = () => {
   presetNameInput.setAttribute("placeholder", "Enter preset name");
   presetNameInput.setAttribute("class", "width100percent");
   presetNameInput.setAttribute("id", "presetNameInput");
-  presetNameInput.addEventListener('keydown', (e) => { if(e.keyCode === 13) initSaveNewPreset(presetNameInput, presetNameButton)});
+  presetNameInput.addEventListener('keydown', (e) => { if (e.keyCode === 13) initSaveNewPreset(presetNameInput, presetNameButton) });
   presetNameButton.setAttribute("class", "button width100percent colorWhite");
   presetNameButton.setAttribute("id", "presetNameButton");
   closeAllWindowsLabel.parentNode.insertBefore(presetNameInput, closeAllWindowsLabel);
@@ -139,9 +139,9 @@ const inputPresetName = () => {
   presetNameInput.focus();
 }
 
-function initSaveNewPreset(presetNameInput, presetNameButton){
+function initSaveNewPreset(presetNameInput, presetNameButton) {
   if (presetNameInput.value !== null && presetNameInput.value !== undefined && presetNameInput.value.trim() !== "") {
-    if (isPresetNameTaken(presetNameInput.value)){
+    if (isPresetNameTaken(presetNameInput.value)) {
       showOverwriteModal(presetNameInput.value);
     } else {
       saveNewPreset(presetNameInput.value);
@@ -152,7 +152,7 @@ function initSaveNewPreset(presetNameInput, presetNameButton){
 }
 
 const isPresetNameTaken = (presetName) => {
-  if (getPresetNames().includes(presetName)){
+  if (getPresetNames().includes(presetName)) {
     return true;
   } else {
     return false;
@@ -160,7 +160,7 @@ const isPresetNameTaken = (presetName) => {
 }
 
 const showOverwriteModal = (presetName) => {
-  modalYesButton.onclick = function () { 
+  modalYesButton.onclick = function () {
     saveNewPreset(presetName, true);
     overwriteModal.setAttribute("class", "modal displayFlex flexCenter flexColumn displayNone");
   }
@@ -175,7 +175,7 @@ const saveNewPreset = (presetName, isOverwritten) => {
     chrome.storage.local.set({
       [presetName]: { name: presetName, windows: windows, isPreset: true, }
     }, function () {
-      if(!isOverwritten){
+      if (!isOverwritten) {
         createPresetListItem(presetName);
       }
     });
@@ -192,7 +192,7 @@ function renderSavedPresets() {
   });
 }
 
-const createPresetListItem = (presetName) => {
+function createPresetListItem(presetName) {
   let presetListItem = document.createElement("div");
   presetListItem.className = "button width100percent positionRelative displayFlex alignItemsCenter listItem";
   presetListItem.textContent = presetName;
@@ -215,22 +215,27 @@ const deletePreset = (presetName) => {
 }
 
 const openPreset = (chosenPreset) => {
-  let windows;
-  if (closeAllWindowsCheckbox.checked) {
-    closeAllWindows();
+  let windowsToOpen;
+  let windowsToClose;
+  
+  if(closeAllWindowsCheckbox.checked){
+    chrome.windows.getAll(function (windows) {
+      windowsToClose = windows;
+    });
   }
+
   chrome.storage.local.get(null, function (data) {
     for (var key in data) {
       if (key === chosenPreset) {
-        windows = data[key].windows;
+        windowsToOpen = data[key].windows;
       }
     }
 
-    if (windows === undefined) {
+    if (windowsToOpen === undefined) {
       return;
     }
 
-    windows.forEach(window => {
+    windowsToOpen.forEach(window => {
       let isMinMaxOrFull = (window.state === "minimized" || window.state === "maximized" || window.state === "fullscreen");
       // see bug with setting state here:
       // https://bugs.chromium.org/p/chromium/issues/detail?id=459841
@@ -249,6 +254,10 @@ const openPreset = (chosenPreset) => {
           incognito: window.incognito,
           type: window.type,
           state: window.state
+        }, () => {
+          if (windowsToClose) {
+            closeWindows(windowsToClose);
+          }
         });
       } else {
         chrome.windows.create({
@@ -257,20 +266,19 @@ const openPreset = (chosenPreset) => {
           incognito: window.incognito,
           type: window.type,
           state: window.state
+        }, () => {
+          if (windowsToClose) {
+            closeWindows(windowsToClose);
+          }
         });
       }
     });
+
   });
 }
 
-const closeAllWindows = () => {
-  chrome.windows.getAll(function (windows) {
-    setTimeout(() =>
-      windows.forEach(window => {
-        chrome.windows.remove(window.id)
-      })
-      // setTimeout( 0) causes code to wait until the current callback stack is clear before being triggered
-      // otherwise closeAllWindows sometimes closes the browser and no preset windows are opened
-      , 0)
-  });
+const closeWindows = (windows) => {
+  windows.forEach(window => {
+    chrome.windows.remove(window.id)
+  })
 }
